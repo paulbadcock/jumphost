@@ -20,6 +20,9 @@ RUN yum install -y \
     ffmpeg-devel \
   && yum clean all
 
+# Ports to expose
+EXPOSE 22
+
 # Persistant data
 VOLUME /data
 
