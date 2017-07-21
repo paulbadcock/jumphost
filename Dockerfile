@@ -24,7 +24,7 @@ RUN yum install -y \
 EXPOSE 22
 
 # Persistant data
-VOLUME /data
+VOLUME ["/data", "/scratch"]
 
 WORKDIR /data
 CMD ["/sbin/init"]
