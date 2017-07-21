@@ -1,6 +1,11 @@
 FROM centos:latest
 MAINTAINER Paul Badcock <docker@bad.co.ck>
 
+# Higher perms
+ENV container docker
+# Make sure to run priv and with
+# -v /sys/fs/cgroup:/sys/fs/cgroup:ro
+
 # Setup EPEL and Nux repo
 RUN yum install -y epel-release
 RUN rpm --import http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro && \
@@ -24,7 +29,7 @@ RUN yum install -y \
 EXPOSE 22
 
 # Persistant data
-VOLUME ["/data", "/scratch"]
+VOLUME ["/data", "/run"]
 
 WORKDIR /data
-CMD ["/sbin/init"]
+CMD ["/usr/sbin/init"]
